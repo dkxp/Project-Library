@@ -1,5 +1,6 @@
 let myLibrary = [];
 let form = document.querySelector('form');
+let table = document.getElementById('table');
 form.addEventListener('submit', addBookToLibrary);
 
 function Book(title, author, pages, read) {
@@ -8,20 +9,17 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
-function addBookToLibrary(event) {
+function addBookToLibrary() {
     event.preventDefault();
     let title = verifyTitle();
-    console.log(title);
     let author = verifyAuthor();
-    console.log(author);
     let pages = verifyPages();
-    console.log(pages);
     let read = verifyRead();
-    console.log(read);
-    let newBook;
     if (title && author && pages) {
-        newBook = new Book(title, author, pages, read);
+        let newBook = new Book(title, author, pages, read);
         myLibrary.push(newBook);
+        removeAllChildNodes(table);
+        createTableRow();
         form.reset();
     }
 }
@@ -46,8 +44,52 @@ function verifyPages() {
 function verifyRead() {
     checkBox = document.getElementById('read');
     if (checkBox.checked) {
-        return true;
+        return 'read';
     } else {
-        return false;
+        return 'unread';
+    }
+}
+function createTableRow() {
+    myLibrary.forEach(element => {
+        let index = myLibrary.indexOf(element);
+        let tr = document.createElement('tr');
+        let tdArray = [];
+        for (let i = 0; i < 5; i++) {
+            tdArray[i] = document.createElement('td');
+            }
+        let deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '<i class="material-icons">delete</i>';
+        deleteButton.addEventListener('click', () => {
+            deleteButton.closest('tr').remove();
+            delete myLibrary[index];
+        });
+        tdArray[4].appendChild(deleteButton);
+        let readStatusButton = document.createElement('button');
+        if (element.read === 'read') {
+            readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">check</i>';
+        } else {
+            readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">close</i>';
+        }
+        readStatusButton.addEventListener('click', () => {
+            if (readStatusButton.innerHTML === '<i id="readBtn" class="material-icons">check</i>') {
+                readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">close</i>';
+            } else {
+                readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">check</i>';
+            }
+        })
+        tdArray[3].appendChild(readStatusButton);
+        tdArray[0].textContent = element.title;
+        tdArray[1].textContent = element.author;
+        tdArray[2].textContent = element.pages;
+        tdArray.forEach(element => {
+            tr.appendChild(element)
+            })
+        table.appendChild(tr);
+        }
+    )
+}
+function removeAllChildNodes(parent) {
+    for (let i = parent.children.length - 1; i > 0; i--) {
+        parent.removeChild(parent.children[i]);
     }
 }
