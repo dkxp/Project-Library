@@ -42,7 +42,7 @@ function verifyPages() {
         return pagesValue;
     }
     else {
-        alert('Please enter a valid number in the pages field')
+        alert('Please enter a valid number in the pages field');
     }
 }
 function verifyRead() {
@@ -60,9 +60,9 @@ function createTableRow() {
         let tdArray = [];
         for (let i = 0; i < 5; i++) {
             tdArray[i] = document.createElement('td');
-            }
+            };
         let deleteButton = document.createElement('button');
-        deleteButton.innerHTML = '<i class="material-icons">delete</i>';
+        deleteButton.innerHTML = '<i id="deleteBtn" class="material-icons">delete</i>';
         deleteButton.addEventListener('click', () => {
             deleteButton.closest('tr').remove();
             delete myLibrary[index];
@@ -73,14 +73,14 @@ function createTableRow() {
             readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">check</i>';
         } else {
             readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">close</i>';
-        }
+        };
         readStatusButton.addEventListener('click', () => {
             if (readStatusButton.innerHTML === '<i id="readBtn" class="material-icons">check</i>') {
                 readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">close</i>';
             } else {
                 readStatusButton.innerHTML = '<i id="readBtn" class="material-icons">check</i>';
             }
-        })
+        });
         tdArray[3].appendChild(readStatusButton);
         tdArray[0].textContent = element.title;
         tdArray[1].textContent = element.author;
