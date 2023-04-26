@@ -1,17 +1,22 @@
 body {
     display: grid;
     margin: 0;
-    grid-template-columns: 1.5fr 2.5fr;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+    width: auto;
 }
 .sideBar {
     grid-column: 1;
     display: flex;
     flex-direction: column;
+    background-color: rgb(233,193,175);
+    flex: 1 1 0;
 }
 .mainBody {
     grid-column: 2;
     display: flex;
     flex-direction: column;
+    background-color: rgb(247,241,240);
 }
 tr {
     text-align: left;
@@ -19,4 +24,33 @@ tr {
 .material-icons {
     font-size: 24px;
     vertical-align: middle;
+}
+#readBtn {
+    font-size: 40px;
+    color: blue;
+}
+fieldset {
+    border: none;
+    padding-top: 15px;
+}
+#newBookButton {
+    font-size: larger;
+    font-weight: bolder;
+    padding: 20px;
+    color: white;
+    background-color: rgb(31,62,89);
+}
+legend {
+    font-size: 40px;
+    padding: 15px 0 15px;
+}
+form {
+    padding-left: 10px;
+}
+tr {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding-top: 65px;
+    font-size: 30px;
 }

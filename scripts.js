@@ -37,8 +37,12 @@ function verifyAuthor() {
 }
 function verifyPages() {
     let pagesInput = document.getElementById('pages');
-    if (pagesInput.value) {
-        return pagesInput.value;
+    let pagesValue = parseInt(pagesInput.value);
+    if (!isNaN(pagesValue) && pagesValue > 0) {
+        return pagesValue;
+    }
+    else {
+        alert('Please enter a valid number in the pages field')
     }
 }
 function verifyRead() {

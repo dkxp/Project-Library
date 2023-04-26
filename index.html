@@ -13,13 +13,14 @@
     <div class="sideBar">
         <form action="">
             <fieldset>
-                <legend>LIBRARY</legend>
-                <label for="title">What is the title of the book?</label>
+                <legend><i id="readBtn" class="material-icons">local_library</i>&nbsp;LIBRARY</legend>
+                <label for="title">What is the title of the book?</label><br>
                 <input type="text" id="title" name="title" required><br><br>
-                <label for="author">Who is the author of the book?</label>
+                <label for="author">Who is the author of the book?</label><br>
                 <input type="text" id="author" name="author" required><br><br>
-                <label for="pages">How many pages is the book?</label>
-                <input type="text" id="pages" name="pages" required ><br><br>
+                <label for="pages">How many pages is the book?</label><br>
+                <input type="tel" id="pages" name="pages" required ><br><br>
+                <!-- <div id="pagesError" class="error">Please enter a number in the pages field.</div><br> -->
                 <input type="checkbox" name="read" id="read"><span>I have already read this book!</span><br><br>
                 <button id="newBookButton">ADD A NEW BOOK</button>
             </fieldset>
